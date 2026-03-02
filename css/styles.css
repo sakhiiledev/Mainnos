@@ -642,14 +642,17 @@ html, body {
 /* Mobile Featured Grid (shown on mobile only) */
 .featured-mobile-grid {
     display: none;
+    visibility: hidden;
 }
 
 @media (max-width: 768px) {
     .featured-mobile-grid {
         display: grid;
+        visibility: visible;
         grid-template-columns: 1fr;
         gap: 20px;
         margin-bottom: 30px;
+        width: 100%;
     }
     
     .featured-mobile-grid .product-card {
@@ -658,6 +661,7 @@ html, body {
         overflow: hidden;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         transition: var(--transition);
+        width: 100%;
     }
     
     .featured-mobile-grid .product-card:hover {
@@ -667,12 +671,17 @@ html, body {
     
     .featured-mobile-grid .product-image {
         width: 100%;
-        aspect-ratio: 1;
+        height: 0;
+        padding-bottom: 100%;
         background: linear-gradient(135deg, var(--light-bg), rgba(124, 179, 66, 0.15));
         overflow: hidden;
+        position: relative;
     }
     
     .featured-mobile-grid .product-img {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -681,6 +690,44 @@ html, body {
     
     .featured-mobile-grid .product-info {
         padding: 20px;
+    }
+    
+    .featured-mobile-grid .category-badge {
+        display: inline-block;
+        background: linear-gradient(135deg, rgba(124, 179, 66, 0.15), rgba(255, 152, 0, 0.1));
+        color: var(--primary-color);
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    
+    .featured-mobile-grid h3 {
+        font-size: 18px;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+    }
+    
+    .featured-mobile-grid .description {
+        color: var(--light-text);
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+    
+    .featured-mobile-grid .view-link {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        display: inline-block;
+        margin-top: 10px;
+        transition: var(--transition);
+    }
+    
+    .featured-mobile-grid .view-link:hover {
+        color: var(--accent-color);
     }
 }
 
@@ -698,7 +745,14 @@ html, body {
 
 @media (max-width: 768px) {
     .carousel-wrapper {
-        display: none;
+        display: none !important;
+        visibility: hidden !important;
+    }
+    
+    .carousel-container,
+    .carousel-btn,
+    .carousel-indicators {
+        display: none !important;
     }
 }
 
@@ -1603,6 +1657,16 @@ html, body {
     /* Featured Section - Mobile Grid Only */
     .featured {
         padding: 50px 0;
+    }
+    
+    .featured .container {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .featured-mobile-grid {
+        display: grid !important;
+        visibility: visible !important;
     }
 
     /* Contact Section */
