@@ -29,13 +29,20 @@ html {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     color: var(--dark-text);
     line-height: 1.6;
     background-color: #ffffff;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* Elegant serif font for all headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 /* Better touch targets for mobile */
@@ -286,17 +293,19 @@ html, body {
 }
 
 .hero h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 64px;
-    font-weight: 900;
-    letter-spacing: -1px;
-    line-height: 1.1;
+    font-weight: 500;
+    letter-spacing: 0px;
+    line-height: 1.2;
     margin: 0;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtitle {
+    font-family: 'Lato', sans-serif;
     font-size: 24px;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 1.4;
     margin: 10px 0;
     opacity: 1;
@@ -304,12 +313,14 @@ html, body {
 }
 
 .hero-features {
-    font-size: 20px;
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     margin: 5px 0 20px;
     opacity: 1;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
 }
 
 .hero p {
@@ -371,13 +382,15 @@ html, body {
 }
 
 .page-hero h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 56px;
-    font-weight: 900;
+    font-weight: 500;
     margin: 0 0 15px 0;
-    letter-spacing: -1px;
+    letter-spacing: 0.5px;
 }
 
 .page-hero-subtitle {
+    font-family: 'Lato', sans-serif;
     font-size: 22px;
     font-weight: 300;
     opacity: 0.95;
@@ -532,23 +545,26 @@ html, body {
 
 .features h2 {
     text-align: center;
-    font-size: 42px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 48px;
+    font-weight: 400;
     margin-bottom: 60px;
     color: var(--primary-color);
     position: relative;
     padding-bottom: 20px;
+    letter-spacing: 0.5px;
 }
 
 .features h2::after {
     content: '';
     position: absolute;
-    width: 60px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    width: 80px;
+    height: 2px;
+    background: var(--primary-color);
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    border-radius: 2px;
+    border-radius: 0;
 }
 
 .features-grid {
@@ -580,15 +596,20 @@ html, body {
 }
 
 .feature-card h3 {
-    font-size: 20px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 24px;
+    font-weight: 500;
     margin-bottom: 15px;
     color: var(--primary-color);
+    letter-spacing: 0.3px;
 }
 
 .feature-card p {
-    color: var(--light-text);
-    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    color: #555;
+    font-size: 15px;
     line-height: 1.8;
+    font-weight: 300;
 }
 
 /* ==================== About Section ==================== */
@@ -598,22 +619,25 @@ html, body {
 }
 
 .about h2 {
-    font-size: 42px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 48px;
+    font-weight: 400;
     color: var(--primary-color);
     margin-bottom: 40px;
     position: relative;
     padding-bottom: 15px;
+    letter-spacing: 0.5px;
 }
 
 .about h2::after {
     content: '';
     position: absolute;
-    width: 50px;
-    height: 4px;
-    background: var(--secondary-color);
+    width: 80px;
+    height: 2px;
+    background: var(--primary-color);
     bottom: 0;
     left: 0;
-    border-radius: 2px;
+    border-radius: 0;
 }
 
 .about-content {
@@ -715,17 +739,22 @@ html, body {
 }
 
 .promo-text h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 48px;
+    font-weight: 400;
     color: var(--primary-color);
     margin-bottom: 20px;
-    line-height: 1.2;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
 }
 
 .promo-text p {
-    font-size: 16px;
-    color: var(--light-text);
-    line-height: 1.8;
+    font-family: 'Lato', sans-serif;
+    font-size: 17px;
+    color: #555;
+    line-height: 1.9;
     margin-bottom: 30px;
+    font-weight: 300;
 }
 
 .promo-phone {
@@ -787,23 +816,26 @@ html, body {
 
 .featured h2 {
     text-align: center;
-    font-size: 42px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 48px;
+    font-weight: 400;
     margin-bottom: 60px;
     color: var(--primary-color);
     position: relative;
     padding-bottom: 20px;
+    letter-spacing: 0.5px;
 }
 
 .featured h2::after {
     content: '';
     position: absolute;
-    width: 60px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    width: 80px;
+    height: 2px;
+    background: var(--primary-color);
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    border-radius: 2px;
+    border-radius: 0;
 }
 
 /* Mobile Featured Grid (shown on mobile only) */
@@ -1106,23 +1138,26 @@ html, body {
 
 .contact h2 {
     text-align: center;
-    font-size: 42px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 48px;
+    font-weight: 400;
     margin-bottom: 60px;
     color: var(--primary-color);
     position: relative;
     padding-bottom: 20px;
+    letter-spacing: 0.5px;
 }
 
 .contact h2::after {
     content: '';
     position: absolute;
-    width: 60px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    width: 80px;
+    height: 2px;
+    background: var(--primary-color);
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    border-radius: 2px;
+    border-radius: 0;
 }
 
 .contact-content {
@@ -1426,9 +1461,12 @@ html, body {
 }
 
 .product-info h3 {
-    font-size: 20px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 24px;
+    font-weight: 500;
     color: var(--primary-color);
     margin-bottom: 10px;
+    letter-spacing: 0.3px;
 }
 
 .category-badge {
@@ -2160,27 +2198,32 @@ html, body {
 
 .content-label {
     display: inline-block;
-    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     margin-bottom: 20px;
 }
 
 .content-text h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 48px;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--primary-color);
     margin-bottom: 20px;
-    line-height: 1.2;
+    line-height: 1.3;
+    letter-spacing: 1px;
 }
 
 .content-text p {
-    font-size: 18px;
-    line-height: 1.8;
-    color: var(--light-text);
+    font-family: 'Lato', sans-serif;
+    font-size: 17px;
+    line-height: 1.9;
+    color: #555;
     margin-bottom: 30px;
+    font-weight: 300;
 }
 
 .content-image {
