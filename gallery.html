@@ -17,16 +17,15 @@
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Store</a></li>
+                <li><a href="products.html">Products</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="gallery.html" class="active">Gallery</a></li>
                 <li><a href="index.html#contact">Contact us</a></li>
             </ul>
             <div class="nav-right">
-                <a href="tel:+27676912886" class="nav-phone"><i class="fas fa-phone"></i> 074-692-9809</a>
                 <div class="nav-social">
                     <a href="https://www.facebook.com/share/1B1vnDeU1z/?mibextid=wwXIfr" target="_blank" class="nav-social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://wa.me/27676912886" target="_blank" class="nav-social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://wa.me/27737949096" target="_blank" class="nav-social-icon"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
             <div class="hamburger">
@@ -37,27 +36,112 @@
         </div>
     </nav>
 
-    <!-- Gallery Header -->
-    <section class="gallery-header">
-        <div class="container">
-            <h1>Gallery</h1>
-            <p>Explore our farm and vegetables in action</p>
+    <!-- Page Hero -->
+    <section class="page-hero" style="background-image: url('Images/image\ 6.jpg');">
+        <div class="page-hero-content">
+            <h1>Our Gallery</h1>
+            <p class="page-hero-subtitle">Explore our fresh produce and farm in action</p>
         </div>
     </section>
 
     <!-- Gallery Section -->
-    <section class="gallery-section">
+    <section class="gallery-showcase">
         <div class="container">
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="Images/Banner.jpeg" alt="Mainnos Fresh Vegetables">
+            <div class="gallery-intro">
+                <h2>Our Fresh Produce Collection</h2>
+                <p>Experience the quality and freshness that defines Mainnos</p>
+            </div>
+            
+            <!-- Main Slideshow -->
+            <div class="slideshow-container">
+                <div class="slideshow-wrapper">
+                    <div class="slide active">
+                        <img src="Images/Gallery/WhatsApp Image 2026-03-02 at 19.52.12.jpeg" alt="Fresh Vegetables">
+                        <div class="slide-caption">
+                            <h3>Premium Fresh Selection</h3>
+                            <p>Handpicked vegetables at their peak freshness</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="Images/Gallery/WhatsApp Image 2026-03-02 at 19.52.13 (1).jpeg" alt="Quality Produce">
+                        <div class="slide-caption">
+                            <h3>Quality You Can See</h3>
+                            <p>Every product carefully selected for excellence</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="Images/Gallery/WhatsApp Image 2026-03-02 at 19.52.13 (2).jpeg" alt="Farm Fresh">
+                        <div class="slide-caption">
+                            <h3>Farm Fresh Daily</h3>
+                            <p>Delivered straight from trusted local farmers</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="Images/Gallery/WhatsApp Image 2026-03-02 at 19.52.13.jpeg" alt="Prepared Vegetables">
+                        <div class="slide-caption">
+                            <h3>Ready to Use</h3>
+                            <p>Pre-cut and prepared for your convenience</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="Images/Gallery/WhatsApp Image 2026-03-02 at 19.52.14 (1).jpeg" alt="Variety Selection">
+                        <div class="slide-caption">
+                            <h3>Wide Variety</h3>
+                            <p>Everything you need for healthy, delicious meals</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="Images/Gallery/WhatsApp Image 2026-03-02 at 19.52.14.jpeg" alt="Fresh & Clean">
+                        <div class="slide-caption">
+                            <h3>Clean & Fresh</h3>
+                            <p>HACCP compliant and quality assured</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="Images/Picture.jpeg" alt="Fresh Produce">
+                
+                <!-- Navigation Arrows -->
+                <button class="slide-nav prev" onclick="changeSlide(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slide-nav next" onclick="changeSlide(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <!-- Slide Counter -->
+                <div class="slide-counter">
+                    <span class="current-slide">1</span> / <span class="total-slides">6</span>
                 </div>
-                <div class="gallery-item">
-                    <img src="Images/General.jpeg" alt="Mainnos Products">
+            </div>
+            
+            <!-- Thumbnail Navigation -->
+            <div class="thumbnail-strip">
+                <div class="thumbnail active" onclick="goToSlide(0)">
+                    <img src="Images/Gallery/WhatsApp Image 2026-03-02 at 19.52.12.jpeg" alt="Thumbnail 1">
                 </div>
+                <div class="thumbnail" onclick="goToSlide(1)">
+                    <img src="Images/Gallery/WhatsApp Image 2026-03-02 at 19.52.13 (1).jpeg" alt="Thumbnail 2">
+                </div>
+                <div class="thumbnail" onclick="goToSlide(2)">
+                    <img src="Images/Gallery/WhatsApp Image 2026-03-02 at 19.52.13 (2).jpeg" alt="Thumbnail 3">
+                </div>
+                <div class="thumbnail" onclick="goToSlide(3)">
+                    <img src="Images/Gallery/WhatsApp Image 2026-03-02 at 19.52.13.jpeg" alt="Thumbnail 4">
+                </div>
+                <div class="thumbnail" onclick="goToSlide(4)">
+                    <img src="Images/Gallery/WhatsApp Image 2026-03-02 at 19.52.14 (1).jpeg" alt="Thumbnail 5">
+                </div>
+                <div class="thumbnail" onclick="goToSlide(5)">
+                    <img src="Images/Gallery/WhatsApp Image 2026-03-02 at 19.52.14.jpeg" alt="Thumbnail 6">
+                </div>
+            </div>
+            
+            <!-- CTA -->
+            <div class="gallery-cta">
+                <h3>Like What You See?</h3>
+                <p>Order your fresh produce today and experience the Mainnos difference</p>
+                <a href="https://wa.me/27737949096?text=Hi%20Mainnos%2C%20I%20would%20like%20to%20place%20an%20order." target="_blank" class="btn btn-primary">
+                    <i class="fab fa-whatsapp"></i> Order Now on WhatsApp
+                </a>
             </div>
         </div>
     </section>
@@ -99,7 +183,7 @@
                                 <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
                             </svg>
                         </a>
-                        <a href="https://wa.me/27676912886" target="_blank" class="social-icon whatsapp-icon" title="WhatsApp">
+                        <a href="https://wa.me/27737949096" target="_blank" class="social-icon whatsapp-icon" title="WhatsApp">
                             <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a7.03 7.03 0 0 1-3.582-.978l-.257-.153-2.654.694.708-2.588-.168-.267a7.033 7.033 0 1 1 5.957 3.293M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652a12.062 12.062 0 0 0 5.703 1.448h.005c6.58 0 11.94-5.334 11.943-11.893 0-3.176-1.238-6.165-3.466-8.454"/>
                             </svg>
