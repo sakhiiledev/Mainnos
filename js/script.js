@@ -2,24 +2,52 @@
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
+    const body = document.body;
 
-    if (hamburger) {
-        hamburger.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navLinks.classList.toggle('active');
             hamburger.classList.toggle('active');
-        });
-    }
-
-    // Close menu when a link is clicked
-    const navItems = document.querySelectorAll('.nav-links a');
-    navItems.forEach(item => {
-        item.addEventListener('click', () => {
-            navLinks.style.display = 'none';
-            if (hamburger) {
-                hamburger.classList.remove('active');
+            
+            // Prevent body scroll when menu is open on mobile
+            if (navLinks.classList.contains('active')) {
+                body.style.overflow = 'hidden';
+            } else {
+                body.style.overflow = '';
             }
         });
-    });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') && 
+                !navLinks.contains(e.target) && 
+                !hamburger.contains(e.target)) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+                body.style.overflow = '';
+            }
+        });
+
+        // Close menu when a link is clicked
+        const navItems = document.querySelectorAll('.nav-links a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+                body.style.overflow = '';
+            });
+        });
+
+        // Handle window resize - close menu and reset overflow
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+                body.style.overflow = '';
+            }
+        });
+    }
 });
 
 // ==================== Map Toggle Function ==================== 
@@ -235,17 +263,166 @@ document.head.appendChild(style);
 // ==================== Mobile Menu Responsive Style ==================== 
 const updateMobileMenu = () => {
     const navLinks = document.querySelector('.nav-links');
+    const hamburger = document.querySelector('.hamburger');
     
-    if (window.innerWidth <= 768) {
-        if (navLinks && !navLinks.style.display) {
-            navLinks.style.display = 'none';
-        }
-    } else {
+    if (window.innerWidth > 768) {
+        // Desktop view - ensure menu is accessible
         if (navLinks) {
-            navLinks.style.display = 'flex';
+            navLinks.classList.remove('active');
         }
+        if (hamburger) {
+            hamburger.classList.remove('active');
+        }
+        // Reset body overflow
+        document.body.style.overflow = '';
     }
 };
 
 window.addEventListener('resize', updateMobileMenu);
 updateMobileMenu();
+
+// ==================== Carousel Functionality ==================== 
+class Carousel {
+    constructor(containerId, prevBtnId, nextBtnId, indicatorsId) {
+        this.container = document.getElementById(containerId);
+        this.prevBtn = document.getElementById(prevBtnId);
+        this.nextBtn = document.getElementById(nextBtnId);
+        this.indicatorsContainer = document.getElementById(indicatorsId);
+        this.currentIndex = 0;
+        this.slides = [];
+        this.touchStartX = 0;
+        this.touchEndX = 0;
+        this.autoScrollInterval = null;
+        this.autoScrollDelay = 3000; // 3 seconds between slides
+
+        if (this.container) {
+            this.init();
+        }
+    }
+
+    init() {
+        this.slides = Array.from(this.container.querySelectorAll('.carousel-slide'));
+        this.createIndicators();
+        this.attachEventListeners();
+        this.updateCarousel();
+        this.startAutoScroll();
+    }
+
+    createIndicators() {
+        if (!this.indicatorsContainer) return;
+        
+        this.slides.forEach((_, index) => {
+            const indicator = document.createElement('div');
+            indicator.className = 'indicator';
+            if (index === 0) indicator.classList.add('active');
+            indicator.addEventListener('click', () => {
+                this.goToSlide(index);
+                this.resetAutoScroll();
+            });
+            this.indicatorsContainer.appendChild(indicator);
+        });
+    }
+
+    attachEventListeners() {
+        if (this.prevBtn) {
+            this.prevBtn.addEventListener('click', () => {
+                this.prev();
+                this.resetAutoScroll();
+            });
+        }
+        if (this.nextBtn) {
+            this.nextBtn.addEventListener('click', () => {
+                this.next();
+                this.resetAutoScroll();
+            });
+        }
+        
+        // Touch/Swipe support
+        if (this.container) {
+            this.container.addEventListener('touchstart', (e) => {
+                this.touchStartX = e.changedTouches[0].screenX;
+                this.stopAutoScroll();
+            });
+            
+            this.container.addEventListener('touchend', (e) => {
+                this.touchEndX = e.changedTouches[0].screenX;
+                this.handleSwipe();
+                this.resetAutoScroll();
+            });
+
+            // Pause auto-scroll on hover
+            this.container.addEventListener('mouseenter', () => {
+                this.stopAutoScroll();
+            });
+
+            this.container.addEventListener('mouseleave', () => {
+                this.startAutoScroll();
+            });
+        }
+    }
+
+    handleSwipe() {
+        const diff = this.touchStartX - this.touchEndX;
+        if (Math.abs(diff) > 50) { // Minimum swipe distance
+            if (diff > 0) {
+                this.next(); // Swipe left - next slide
+            } else {
+                this.prev(); // Swipe right - previous slide
+            }
+        }
+    }
+
+    prev() {
+        this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+        this.updateCarousel();
+    }
+
+    next() {
+        this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+        this.updateCarousel();
+    }
+
+    goToSlide(index) {
+        this.currentIndex = index;
+        this.updateCarousel();
+    }
+
+    updateCarousel() {
+        // Move carousel
+        const offset = -this.currentIndex * 100;
+        this.container.style.transform = `translateX(${offset}%)`;
+
+        // Update indicators
+        if (this.indicatorsContainer) {
+            const indicators = this.indicatorsContainer.querySelectorAll('.indicator');
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === this.currentIndex);
+            });
+        }
+    }
+
+    startAutoScroll() {
+        if (this.autoScrollInterval) return; // Already running
+        
+        this.autoScrollInterval = setInterval(() => {
+            this.next();
+        }, this.autoScrollDelay);
+    }
+
+    stopAutoScroll() {
+        if (this.autoScrollInterval) {
+            clearInterval(this.autoScrollInterval);
+            this.autoScrollInterval = null;
+        }
+    }
+
+    resetAutoScroll() {
+        this.stopAutoScroll();
+        this.startAutoScroll();
+    }
+}
+
+// Initialize carousel when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    new Carousel('featuredCarousel', 'prevBtn', 'nextBtn', 'indicators');
+});
